@@ -2,12 +2,11 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:weightSum="2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".PhotoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,34 +32,34 @@
                 android:paddingLeft="@dimen/_7sdp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Gallery"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="end"
-                android:padding="@dimen/_5sdp"
-                android:layout_marginRight="@dimen/_3sdp"
-                android:textSize="@dimen/_15ssp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Next"/>
+                android:text="Photo"/>
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/iv_preview"
-        android:layout_weight="1"
-        android:src="@mipmap/ic_launcher"
-        android:scaleType="centerCrop"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_weight="1"
-        android:id="@+id/galleryRV"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        <com.otaliastudios.cameraview.CameraView
+            android:id="@+id/camera"
+            android:keepScreenOn="true"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/iv_capture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_capture"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:layout_weight="1.5"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,15 +70,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GALLERY"
+            android:id="@+id/tv_gallery"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_medium"
             android:textSize="@dimen/_12ssp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/grey"/>
 
         <TextView
-            android:id="@+id/tv_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PHOTO"
@@ -88,7 +87,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/roboto_medium"
             android:textSize="@dimen/_12ssp"
-            android:textColor="@color/grey"/>
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -102,5 +101,6 @@
             android:textColor="@color/grey"/>
 
     </LinearLayout>
+
 
 </LinearLayout>
