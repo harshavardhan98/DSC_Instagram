@@ -72,7 +72,7 @@ public class PhotoActivity extends AppCompatActivity {
 
                         try{
                             capturedBmp=bitmap;
-                            //startActivity(new Intent(PhotoActivity.this,PreviewActivity.class));
+                            startActivity(new Intent(PhotoActivity.this,PreviewActivity.class));
                         }catch (Exception e){
                             Log.d("bitmap",e.getMessage());
                             e.printStackTrace();
