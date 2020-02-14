@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,10 +13,12 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.zomato.photofilters.SampleFilters;
 import com.zomato.photofilters.imageprocessors.Filter;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +33,9 @@ public class PreviewActivity extends AppCompatActivity {
 
     ImageView iv_preview;
     ImageView iv_back;
+    TextView tv_next;
     RecyclerView rv_filterList;
-    Bitmap bitmap;
+    Bitmap bitmap,currentBitmap;
     ArrayList<FilterImage> thumbnailItemArrayList;
     FilterAdapter filterAdapter;
 
@@ -45,7 +49,9 @@ public class PreviewActivity extends AppCompatActivity {
         actionBar.hide();
 
         bitmap=PhotoActivity.capturedBmp;
+        currentBitmap=PhotoActivity.capturedBmp;
 
+        tv_next=findViewById(R.id.tv_next);
         iv_preview=findViewById(R.id.iv_preview);
         iv_preview.setImageBitmap(bitmap);
         iv_back=findViewById(R.id.iv_back);
@@ -64,6 +70,19 @@ public class PreviewActivity extends AppCompatActivity {
         rv_filterList.setLayoutManager(linearLayoutManager);
         filterAdapter=new FilterAdapter(thumbnailItemArrayList);
         rv_filterList.setAdapter(filterAdapter);
+
+
+        tv_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                currentBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                Intent intent=new Intent(PreviewActivity.this,NewPostActivity.class);
+                intent.putExtra("image",byteArray);
+                startActivity(intent);
+            }
+        });
 
         new loadFilterTask().execute();
 

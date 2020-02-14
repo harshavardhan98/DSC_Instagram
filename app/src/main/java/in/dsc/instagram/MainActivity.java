@@ -12,6 +12,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static String TAG = "MainActivity";
     RecyclerView rv_gallery;
     ImageView iv_image_preview,iv_close;
-    TextView tv_camera;
+    TextView tv_camera,tv_next;
     GridLayoutManager gridLayoutManager;
     GalleryAdapter galleryAdapter;
 
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         tv_camera = findViewById(R.id.tv_camera);
+        tv_next=findViewById(R.id.tv_next);
         iv_image_preview = findViewById(R.id.iv_preview);
         iv_close=findViewById(R.id.iv_close);
         rv_gallery = findViewById(R.id.galleryRV);
@@ -82,6 +85,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+
+        tv_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BitmapDrawable drawable = (BitmapDrawable) iv_image_preview.getDrawable();
+                Bitmap bitmap = drawable.getBitmap();
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                Intent intent=new Intent(MainActivity.this,NewPostActivity.class);
+                intent.putExtra("image",byteArray);
+                startActivity(intent);
             }
         });
 

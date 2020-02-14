@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewPostActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:src="@drawable/ic_back_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_2sdp"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Post"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="@dimen/_2sdp"
+            android:textSize="@dimen/_15sdp"
+            android:layout_toRightOf="@id/iv_back"/>
+
+
+        <TextView
+            android:id="@+id/tv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Share"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/_2sdp"
+            android:textSize="@dimen/_15sdp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="#c0c0c0"/>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_thumbnail"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"/>
+
+        <EditText
+            android:id="@+id/ed_caption"
+            android:hint="Write a caption"
+            android:padding="@dimen/_15sdp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/roboto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="#c0c0c0"/>
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:text="    Add Location"
+        android:padding="@dimen/_2sdp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="#c0c0c0"/>
+
+</LinearLayout>
