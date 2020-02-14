@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="@dimen/_20sdp"
+    android:paddingBottom="@dimen/_20sdp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_profile_pic"
+            android:layout_alignParentLeft="true"
+            android:src="@mipmap/ic_launcher"
+            android:paddingLeft="@dimen/_5sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"/>
+
+        <TextView
+            android:text="Harry Potter"
+            android:layout_toRightOf="@id/iv_profile_pic"
+            android:paddingLeft="@dimen/_6sdp"
+            android:paddingTop="@dimen/_6sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:layout_alignParentRight="true"
+            android:paddingTop="@dimen/_6sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_postImage"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:padding="@dimen/_10sdp"
+        android:layout_height="@dimen/_250sdp"/>
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_like"
+            android:src="@drawable/ic_heart"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"/>
+
+        <ImageView
+            android:id="@+id/iv_comment"
+            android:paddingTop="@dimen/_2sdp"
+            android:src="@drawable/ic_comment"
+            android:layout_toRightOf="@id/iv_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/iv_send"
+            android:src="@drawable/ic_send"
+            android:paddingTop="@dimen/_3sdp"
+            android:layout_toRightOf="@id/iv_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/iv_bookmark"
+            android:src="@drawable/ic_bookmark"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:text="330 likes"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_caption"
+        android:text="One ring to rule them all"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_20sdp"
+        android:fontFamily="@font/roboto"
+        android:textSize="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
