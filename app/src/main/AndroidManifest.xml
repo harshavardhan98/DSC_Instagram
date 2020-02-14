@@ -9,6 +9,7 @@
 
     <application
         android:allowBackup="true"
+        android:name="androidx.multidex.MultiDexApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
@@ -16,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewPostActivity"></activity>
+        <activity android:name=".FeedsActivity"></activity>
+        <activity android:name=".NewPostActivity" />
         <activity android:name=".PreviewActivity" />
         <activity android:name=".PhotoActivity" />
         <activity android:name=".MainActivity">

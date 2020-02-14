@@ -150,7 +150,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG,s);
 
             galleryAdapter.notifyDataSetChanged();
-            Glide.with(MainActivity.this).load(new File(allImages.get(0))).diskCacheStrategy(DiskCacheStrategy.ALL).into(iv_image_preview);
+            if(allImages.size()>0)
+                Glide.with(MainActivity.this).load(new File(allImages.get(0))).diskCacheStrategy(DiskCacheStrategy.ALL).into(iv_image_preview);
         }
 
     }

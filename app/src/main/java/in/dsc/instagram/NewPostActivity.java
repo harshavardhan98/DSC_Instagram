@@ -20,14 +20,19 @@ import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
+
+import in.dsc.instagram.model.Post;
 
 public class NewPostActivity extends AppCompatActivity {
 
@@ -74,7 +79,7 @@ public class NewPostActivity extends AppCompatActivity {
 
                 Toast.makeText(NewPostActivity.this, "image upload started", Toast.LENGTH_SHORT).show();
                 uploadImage(bmp);
-                //startActivity(new Intent(NewPostActivity.this,FeedsActivity.class));
+                startActivity(new Intent(NewPostActivity.this,FeedsActivity.class));
             }
         });
 
@@ -101,6 +106,7 @@ public class NewPostActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         Log.d("dsc_insta","photo upload successful");
+                        addNewPost(uri.toString());
                     }
                 });
 
@@ -108,4 +114,28 @@ public class NewPostActivity extends AppCompatActivity {
         });
 
     }
+
+    public void addNewPost(String photoUrl){
+
+        Post post=new Post("1998",ed_caption.getText().toString(),photoUrl);
+
+        FirebaseFirestore.getInstance().collection("post")
+                .add(post)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(NewPostActivity.this, "", Toast.LENGTH_SHORT).show();
+                        documentReference.update("postId",documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(NewPostActivity.this, "", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
+
+
 }
